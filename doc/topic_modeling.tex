@@ -203,74 +203,88 @@ Y el t\'opico que muestra temas como t\'opicos guerra, snowden, amenaza, usd, ga
   \centering
   \includegraphics[scale=0.2]{burble_k4_10_mallet_keys.png}
   \caption{T\'opicos y sus Pesos.}  
-  \label{fgr:perplexity}
+  \label{fgr:burble}
 \end{figure}
 
-\begin{itemize}
-\item Dolares, Blue, fernandez, inflaci\'on, crisis, seguridad es el t\'opico con mayor peso y asocia a todos los diarios de argentina.
-\item Crisis en europa, deuda y deficit, representan a los diarios espa\~noles. 
-\item Venezuela, mundial, unidos, america latina, guerra, snowden, dolares, crisis, amenaza, acuerdos, china. Asocia a los diarios de actualidadRT.com
+T\'opicos de la figura 3:
+Dolares, Blue, fernandez, inflaci\'on, crisis, seguridad es el t\'opico con mayor peso y asocia a todos los diarios de argentina.
+\\
+Crisis en europa, deuda y deficit, representan a los diarios espa\~noles. 
+\\
+Venezuela, mundial, unidos, america latina, guerra, snowden, dolares, crisis, amenaza, acuerdos, china. Asocia a los diarios de actualidadRT.com
 y avn.info.ve, puede deberse a que ambos pa\'ises ofrecieron asilo a snowden.
-\end{itemize}
-
 
 \subsection{ Grafo con la distribuci\'on de palabras por t\'opicos para k=4  }
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.2]{topics_words_4_10_txt.png}
-  \caption{Distribuci\'on de Palabras por t\'opico.}  
-  \label{fgr:perplexity}
-\end{figure}
 
-Se puede observar que el t\'opico 3 contiene un n\'umero mayor de palabras con respecto a los otros t\'opicos.
+Se puede observar en la figura 5 que el t\'opico 3 contiene un n\'umero mayor de palabras con respecto a los otros t\'opicos.
 Siento este t\'opico m\'as general: crisis crecimiento reforma america centro venezuela desarrollo latina 
 ministro plan mayor deuda mundial comercio inversiones economico problemas rol unidos.
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.2]{topics_words_4_10_txt.png}
+  \caption{Distribuci\'on de Palabras por t\'opico, para k=4.}  
+  \label{fgr:perplexity}
+\end{figure}
+
 \subsection{ Treemap para k=8  }
+
 \begin{figure}[h]
   \centering
   \includegraphics[scale=0.2]{tremap_k8_5_P0_998_unigram.png}
   \caption{Treemap para k=8, el color representa un t\'opico, y como agrupa los diferentes diarios.}  
-  \label{fgr:perplexity}
+  \label{fgr:treemap}
 \end{figure}
 
-\begin{itemize}
-\item avn.info.ve, telegrafo.com.ec, eleconomista.com.mx, tienen los t\'opicos: centro venezuela
+ avn.info.ve, telegrafo.com.ec, eleconomista.com.mx, tienen los t\'opicos: centro venezuela
  desarrollo chavez interes america mundial muertos comercio latina
  politicas acuerdo eeuu redaccion revolucion crisis region snowden unidos. 	
+\\
 
-\item ultimahora.com, cincodias.com, los asocia con los t\'opicos: europa credito asuncion
+ ultimahora.com, cincodias.com, los asocia con los t\'opicos: europa credito asuncion
  fiscal inversiones rosalia subidas egipto depositos impuestos diaz palacio gibraltar. 
 En este t\'opico debe asociar a diarios de paraguay s\'olo que no son listado por no 
 tener una probabilidad de pertenencia por encima de 0.998
+\\
  
-\item elpais.com, nuevatribuna.com menciona: euros alta crisis america europa fiscal 
+ elpais.com, nuevatribuna.com menciona: euros alta crisis america europa fiscal 
 deuda reforma  debate barcelona ministro partido 
 medidas deficit paga bruselas francia bankia.
-
-\item el resto de los diarios de Argentina los asocia con el t\'opico 2, dolares precios 
+\\
+el resto de los diarios de Argentina los asocia con el t\'opico 2, dolares precios 
 inflacion cristina blue pesos menos crecimiento productos mayor maria 
 crisis acuerdo oficial demanda bolsa credito argentinos deuda.
 
-\end{itemize}
 
 \section{Conclusiones.}
-\begin{itemize}
-\item El potencial del modelado de t\'opicos no se observa en cada 
+El potencial del modelado de t\'opicos no se observa en cada 
 documento individualmente, sino m\'as bien en un enfoque global analizando 
 grandes cantidades de documentos para visualizar patrones entre ellos. 
-\item El Parametro DirichLet permite darle un peso al t\'opico, haciendo 
+\\
+\\
+El Parametro DirichLet permite darle un peso al t\'opico, haciendo 
 que sobresalgo por encima de otros t\'opicos, y la variacion de este 
 parametros permite un mejor ajuste del modelo.
-\item El intervalo permite que el software realice un calculo optimizado de los parametros alfa y beta cada N iteraciones.
-\item Conforme se a\~naden m\'as t\'opicos el modelo se vuelve m\'as espec\'ifico, y tiende a colocar todos los documentos que pertenecen a un diario en un mismo t\'opico, para k=10, ocurri\'o esto, de 10 t\'opicos 8 ten\'ia una probabilidad alta por encima de 0.998 y 7 t\'opicos estaban asociados a un solo diario.
-\item No existe un modelo mejor que otro, depende del objetivo. Si se desea realizar
+\\
+\\
+El intervalo permite que el software realice un calculo optimizado de los parametros alfa y beta cada N iteraciones.
+\\
+\\
+Conforme se a\~naden m\'as t\'opicos el modelo se vuelve m\'as espec\'ifico, y tiende a colocar todos los documentos que pertenecen a un diario en un mismo t\'opico, para k=10, ocurri\'o esto, de 10 t\'opicos 8 ten\'ia una probabilidad alta por encima de 0.998 y 7 t\'opicos estaban asociados a un solo diario.
+\\
+\\
+No existe un modelo mejor que otro, depende del objetivo. Si se desea realizar
+\\
+\\
  una clasificador de texto en base al modelado de t\'opicos, 
 podr\'iamos usar k=cantidad de clases y modificar los parametros que permitan 
 reducir la perplejidad al m\'aximo, de forma que cada t\'opico pueda representar una clase.
-\item luego de cada ejecuci\'on, siempre arrojar\'a resultados diferentes ya que Mallet utiliza Gibbs sampling por defecto, para calcular la probabilidad a posteriori. Por ende la comparaci\'on entre modelos no es muy pr\'actica.
-\item La cantidad de t\'opicos recomendada no existe por ende se debe realizar una gran cantidad de iteraciones para observar cual se ajusta mejor a la data. Usualmente mientras m\'as general menor cantidad de t\'opicos mientras m\'as espec\'ifico cada t\'opico tendr\'a menor cantidad de diarios.
-\end{itemize}
+\\
+\\
+luego de cada ejecuci\'on, siempre arrojar\'a resultados diferentes ya que Mallet utiliza Gibbs sampling por defecto, para calcular la probabilidad a posteriori. Por ende la comparaci\'on entre modelos no es muy pr\'actica.
+\\
+\\
+La cantidad de t\'opicos recomendada no existe por ende se debe realizar una gran cantidad de iteraciones para observar cual se ajusta mejor a la data. Usualmente mientras m\'as general menor cantidad de t\'opicos mientras m\'as espec\'ifico cada t\'opico tendr\'a menor cantidad de diarios.
 
 \section{Referencias.}
 
