@@ -1,0 +1,92 @@
+
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R es un software libre y viene sin GARANTIA ALGUNA.
+Usted puede redistribuirlo bajo ciertas circunstancias.
+Escriba 'license()' o 'licence()' para detalles de distribucion.
+
+R es un proyecto colaborativo con muchos contribuyentes.
+Escriba 'contributors()' para obtener más información y
+'citation()' para saber cómo citar R o paquetes de R en publicaciones.
+
+Escriba 'demo()' para demostraciones, 'help()' para el sistema on-line de ayuda,
+o 'help.start()' para abrir el sistema de ayuda HTML con su navegador.
+Escriba 'q()' para salir de R.
+
+[Previously saved workspace restored]
+
+> 
+> library("tm")
+> library("Snowball")
+> 
+> files = read.table("tostemming.txt", header=FALSE,sep="\n")
+> files = as.vector(t(files))
+> mystopwords = read.table("es3.2.txt", header=FALSE,sep="\n")
+> mystopwords = as.vector(t(mystopwords))
+> sizedocs = length(files)
+> 
+> for (i in 1:sizedocs) {
++ 	(noticias = Corpus(DirSource(files[i]), readerControl = list(language="es")))
++ 	noticias <- tm_map(noticias, tolower) 
++ 	noticias <- tm_map(noticias, removePunctuation) 
++ 	noticias = tm_map(noticias,removeWords,stopwords("spanish"))
++ 	noticias = tm_map(noticias,removeWords,mystopwords)
++ 	noticias = tm_map(noticias,stemDocument)
++ 	size = length(noticias)
++         mainDir = files[i]  
++         subDir = paste0(files[i], '_stem')
++         print( mainDir)
++         print (subDir )
++         if (file.exists(subDir)) {
++           setwd(subDir)
++         } else {
++ 	  dir.create(subDir)
++           setwd(subDir)
++         }
++ 	for (i in 1:size ) {
++ 	filename = paste0(subDir,i)
++ 	filename = paste0(filename,'.txt')
++ 	write.table(noticias[[i]], file=filename, row.names=F, col.names=F)
++ 	}
++ }
+Refreshing GOE props...
+---Registering Weka Editors---
+Trying to add database driver (JDBC): RmiJdbc.RJDriver - Warning, not in CLASSPATH?
+Trying to add database driver (JDBC): jdbc.idbDriver - Warning, not in CLASSPATH?
+Trying to add database driver (JDBC): org.gjt.mm.mysql.Driver - Warning, not in CLASSPATH?
+Trying to add database driver (JDBC): com.mckoi.JDBCDriver - Warning, not in CLASSPATH?
+Trying to add database driver (JDBC): org.hsqldb.jdbcDriver - Warning, not in CLASSPATH?
+[KnowledgeFlow] Loading properties and plugins...
+[KnowledgeFlow] Initializing KF...
+[1] "/media/misperoles/git/homework/tp_textII/data/01pagina12"
+[1] "/media/misperoles/git/homework/tp_textII/data/01pagina12_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/02lanacion"
+[1] "/media/misperoles/git/homework/tp_textII/data/02lanacion_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/03avninfove"
+[1] "/media/misperoles/git/homework/tp_textII/data/03avninfove_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/04elpais"
+[1] "/media/misperoles/git/homework/tp_textII/data/04elpais_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/05infobae"
+[1] "/media/misperoles/git/homework/tp_textII/data/05infobae_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/06eluniverso"
+[1] "/media/misperoles/git/homework/tp_textII/data/06eluniverso_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/08cronista"
+[1] "/media/misperoles/git/homework/tp_textII/data/08cronista_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/09actualidadrt"
+[1] "/media/misperoles/git/homework/tp_textII/data/09actualidadrt_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/12noticias24"
+[1] "/media/misperoles/git/homework/tp_textII/data/12noticias24_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/13portafolio_co"
+[1] "/media/misperoles/git/homework/tp_textII/data/13portafolio_co_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/14gestionpe"
+[1] "/media/misperoles/git/homework/tp_textII/data/14gestionpe_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/15larazon"
+[1] "/media/misperoles/git/homework/tp_textII/data/15larazon_stem"
+[1] "/media/misperoles/git/homework/tp_textII/data/16ultimahora"
+[1] "/media/misperoles/git/homework/tp_textII/data/16ultimahora_stem"
+> 
+> proc.time()
+    user   system  elapsed 
+1456,852    3,966 1477,513 

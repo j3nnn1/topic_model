@@ -1,0 +1,13 @@
+/media/misperoles/git/homework/tp_textII/data/01pagina12
+/media/misperoles/git/homework/tp_textII/data/02lanacion
+/media/misperoles/git/homework/tp_textII/data/03avninfove
+/media/misperoles/git/homework/tp_textII/data/04elpais
+/media/misperoles/git/homework/tp_textII/data/05infobae
+/media/misperoles/git/homework/tp_textII/data/06eluniverso
+/media/misperoles/git/homework/tp_textII/data/08cronista
+/media/misperoles/git/homework/tp_textII/data/09actualidadrt
+/media/misperoles/git/homework/tp_textII/data/12noticias24
+/media/misperoles/git/homework/tp_textII/data/13portafolio_co
+/media/misperoles/git/homework/tp_textII/data/14gestionpe
+/media/misperoles/git/homework/tp_textII/data/15larazon
+/media/misperoles/git/homework/tp_textII/data/16ultimahora
