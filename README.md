@@ -12,3 +12,5 @@ Scripts python, ruby, shell used for visualize data: MIT License
 
 newspapers:
 
+Data could be found here: mallet-2.0.7/train and mallet-2.0.7/test
+
